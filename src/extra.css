@@ -1,0 +1,310 @@
+
+
+<div class="shoppable-image__hotspot shoppable-image__hotspot--pulse" style="left: 23.1098%; bottom: 74.525%; visibility: visible; --pxu-lia-inner-sequence: 0;" data-hotspot-x-axis="24" data-hotspot-y-axis="79" data-hotspot="" data-hotspot-product="4546849210466" aria-label="Product hotspot" tabindex="0">
+<div class="shoppable-image__hotspot-background"></div>
+<div class="shoppable-image__hotspot-inner"></div>
+<div class="hotspot__tooltip-wrapper" data-tooltip-wrapper="" role="tooltip" style="">
+  <a href="/products/beer-caddy-bag" class="hotspot__tooltip" data-tooltip="" tabindex="0">
+    
+      <div class="hotspot__tooltip-image-wrapper">
+        
+          
+
+
+<noscript data-rimg-noscript="">
+<img
+
+src="//empire-theme-supply.myshopify.com/cdn/shop/products/Beer-Caddy-with-Bottle-Opener-1_800x800_crop_center.jpg?v=1612798431"
+
+
+alt=""
+data-rimg="noscript"
+srcset="//empire-theme-supply.myshopify.com/cdn/shop/products/Beer-Caddy-with-Bottle-Opener-1_800x800_crop_center.jpg?v=1612798431 1x, //empire-theme-supply.myshopify.com/cdn/shop/products/Beer-Caddy-with-Bottle-Opener-1_1000x1000_crop_center.jpg?v=1612798431 1.25x"
+class="tooltip__image"
+
+
+>
+</noscript>
+
+
+<img src="//empire-theme-supply.myshopify.com/cdn/shop/products/Beer-Caddy-with-Bottle-Opener-1_800x800_crop_center.jpg?v=1612798431" alt="" data-rimg="loaded" data-rimg-scale="1" data-rimg-template="//empire-theme-supply.myshopify.com/cdn/shop/products/Beer-Caddy-with-Bottle-Opener-1_{size}_crop_center.jpg?v=1612798431" data-rimg-max="1000x1000" data-rimg-crop="center" srcset="//empire-theme-supply.myshopify.com/cdn/shop/products/Beer-Caddy-with-Bottle-Opener-1_120x120_crop_center.jpg?v=1612798431 1.50x" class="tooltip__image" data-rimg-template-svg="data:image/svg+xml;utf8,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='800'%20height='800'></svg>">
+
+
+
+<div data-rimg-canvas=""></div>
+
+
+        
+      </div>
+    
+
+    <div class="hotspot__tooltip-content">
+      
+      
+        <div class="hotspot__tooltip-sale">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+
+        </div>
+      
+
+      <div class="hotspot__tooltip-title">
+        Beer Caddy Bag
+      </div>
+
+      
+
+      <div class="hotspot__tooltip-price">
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="price hotspot__price ">
+          
+            <div class="price__compare-at " data-price-compare-container="">
+        
+              
+            </div>
+        
+        
+            
+          
+        
+          <div class="price__current  " data-price-container="">
+        
+            
+        
+            
+              
+              
+              <span class="money" data-price="">
+                $40.00
+              </span>
+            
+            
+          </div>
+        
+          
+        
+          
+        
+          
+        </div>
+        
+
+      </div>
+
+      
+        <div class="hotspot__tooltip-link">
+          Shop Product
+        </div>
+      
+    </div>
+  </a>
+</div>
+</div>
+
+
+
+
+
+
+
+
+.shoppable-image__hotspot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.shoppable-image__hotspot-background {
+    width: 100%;
+    height: 100%;
+    background-color: #0006;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: none;
+    transition: background-color .15s cubic-bezier(.4,0,.2,1), box-shadow .15s cubic-bezier(.4,0,.2,1);
+}
+
+.shoppable-image__hotspot-inner{
+
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform .15s cubic-bezier(.4,0,.2,1);
+    transform: scale(1) translate(-50%, 50%);
+}
+
+.hotspot__tooltip-wrapper {
+    position: absolute;
+    top: 14px;
+    width: 17.5rem;
+    margin-top: 0;
+    margin-right: 2rem;
+    margin-bottom: calc(2rem + 16px);
+    margin-left: 2rem;
+    text-align: center;
+    text-decoration: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s, transform .2s;
+    transition-delay: 75ms;
+    transform: translate(calc(-1*(50% + 2rem)), 16px);
+}
+
+.hotspot__tooltip {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 1.75rem 1rem 1rem;
+    text-decoration: none;
+    background-color: #fff;
+    outline: none;
+}
+
+.hotspot__tooltip-image-wrapper {
+    align-items: center;
+    width: 5rem;
+    min-width: 5rem;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.tooltip__image {
+    width: 100%;
+}
+
+[data-rimg=loaded] {
+    opacity: 1;
+}
+[data-rimg=lazy], [data-rimg=loading], [data-rimg=loaded] {
+    transition: opacity .2s cubic-bezier(.4,0,1,1);
+}
+img {
+    border-style: none;
+}
+
+[data-rimg=loaded]+[data-rimg-canvas], [data-rimg=loaded]>[data-rimg-canvas], .no-js [data-rimg-canvas] {
+    opacity: 0;
+    visibility: hidden;
+    animation: none;
+}
+
+[data-rimg-canvas] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: shimmer-background 1.05s cubic-bezier(.4,0,.2,1) infinite;
+    animation-fill-mode: forwards;
+    transition: opacity .2s cubic-bezier(0,0,.2,1), visibility 0ms cubic-bezier(0,0,.2,1) .1s;
+    animation-direction: alternate;
+}
+.hotspot__tooltip-content {
+    flex-grow: 1;
+    text-align: left;
+    word-break: break-word;
+}
+
+.hotspot__tooltip-title {
+    font-family: Nunito Sans, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--font-size-body-medium);
+    line-height: 1.3125;
+}
+
+.hotspot__tooltip-price {
+    margin: 0.5rem 0;
+}
+
+.hotspot__tooltip-content div:last-child {
+    margin-bottom: 0;
+}
+
+.price__compare-at {
+    display: none;
+    font-size: .8125rem;
+    line-height: 1.38;
+    color: #949494;
+    text-decoration: line-through;
+}
+
+.hotspot__tooltip-content div:last-child {
+    margin-bottom: 0;
+}
+
+.hotspot__tooltip-price .price__current {
+    color: #046e82;
+}
+.price__current {
+    margin-right: 0.25rem;
+    font-size: var(--font-size-body);
+    line-height: 1.4375rem;
+}
+
+.hotspot__tooltip-content div:last-child {
+    margin-bottom: 0;
+}
+.hotspot__tooltip-link {
+    font-size: var(--font-size-body-smaller);
+    color: #046e82;
+    text-decoration: none;
+}

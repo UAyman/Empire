@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+
+    <script>
+        function imageZoom(imgID, resultID) {
+            var img, lens, result, cx, cy;
+            img = document.getElementById(imgID);
+            result = document.getElementById(resultID);
+            /*create lens:*/
+            lens = document.createElement("DIV");
+            lens.setAttribute("class", "img-zoom-lens");
+            /*insert lens:*/
+            img.parentElement.insertBefore(lens, img);
+            /*calculate the ratio between result DIV and lens:*/
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+            /*set background properties for the result DIV:*/
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+            /*execute a function when someone moves the cursor over the image, or the lens:*/
+            lens.addEventListener("mousemove", moveLens);
+            img.addEventListener("mousemove", moveLens);
+            /*and also for touch screens:*/
+            lens.addEventListener("touchmove", moveLens);
+            img.addEventListener("touchmove", moveLens);
+            function moveLens(e) {
+                var pos, x, y;
+                /*prevent any other actions that may occur when moving over the image:*/
+                e.preventDefault();
+                /*get the cursor's x and y positions:*/
+                pos = getCursorPos(e);
+                /*calculate the position of the lens:*/
+                x = pos.x - (lens.offsetWidth / 2);
+                y = pos.y - (lens.offsetHeight / 2);
+                /*prevent the lens from being positioned outside the image:*/
+                if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
+                if (x < 0) { x = 0; }
+                if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
+                if (y < 0) { y = 0; }
+                /*set the position of the lens:*/
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                /*display what the lens "sees":*/
+                result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            }
+            function getCursorPos(e) {
+                var a, x = 0, y = 0;
+                e = e || window.event;
+                /*get the x and y positions of the image:*/
+                a = img.getBoundingClientRect();
+                /*calculate the cursor's x and y coordinates, relative to the image:*/
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return { x: x, y: y };
+            }
+        }
+    </script>
+
+
+
+</head>
+
+<body class="nunito-sans-myfont">
+    <div class="headsec">
+        <div class="head1">
+            <h3>Now Offering free shipping on all orders above $150!</h3>
+        </div>
+        <div class="head2">
+            <div class="head2lft">
+                <a href="">FAQ</a>
+                <a href="">Careers</a>
+                <a href="">Affiliate</a>
+            </div>
+            <div class="head2right">
+
+                <a class="social-link" title="Email" href="mailto:info@example.com" target="_blank">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.5314 16.52C14.4762 16.5754 14.4101 16.6189 14.3374 16.6477C14.2647 16.6765 14.1868 16.6901 14.1086 16.6876C13.9588 16.6855 13.8158 16.6246 13.7105 16.5181L6 8.80762V20.1371H22V8.83619L14.5314 16.52Z"
+                            fill="currentColor"></path>
+                        <path d="M21.2171 8H6.80762L14.1143 15.3086L21.2171 8Z" fill="currentColor"></path>
+                    </svg>
+
+
+                </a>
+
+                <a class="social-link" title="Facebook" href="https://facebook.com/pixelunion" target="_blank">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M13.591 6.00441C11.5868 6.11515 9.75158 6.92966 8.34448 8.333C7.44444 9.23064 6.78641 10.2982 6.39238 11.5002C6.01229 12.6596 5.90552 13.9193 6.08439 15.1343C6.18456 15.8146 6.36736 16.4631 6.63981 17.1046C6.71166 17.2738 6.89438 17.6476 6.98704 17.815C7.22995 18.2538 7.52906 18.6904 7.84853 19.0725C8.16302 19.4486 8.56717 19.8479 8.94482 20.1556C9.6776 20.7526 10.5183 21.2186 11.4085 21.5211C11.8412 21.6681 12.259 21.7723 12.7342 21.8517L12.751 21.8545V19.0664V16.2783H11.7348H10.7186V15.1231V13.9678H11.7344H12.7503L12.7531 12.9265C12.756 11.8203 12.7553 11.845 12.7927 11.5862C12.9306 10.6339 13.3874 9.91646 14.1198 9.50212C14.4564 9.31168 14.8782 9.18341 15.331 9.13374C15.791 9.0833 16.55 9.12126 17.351 9.23478C17.4659 9.25105 17.5612 9.26437 17.5629 9.26437C17.5646 9.26437 17.566 9.70662 17.566 10.2472V11.2299L16.9679 11.233C16.3284 11.2363 16.299 11.2379 16.1298 11.2771C15.6926 11.3785 15.4015 11.6608 15.2983 12.0834C15.2566 12.2542 15.256 12.2685 15.256 13.1531V13.9678H16.3622C17.3606 13.9678 17.4685 13.9689 17.4685 13.9795C17.4685 13.9921 17.1263 16.2236 17.1191 16.2578L17.1148 16.2783H16.1854H15.256V19.0647V21.8511L15.2954 21.8459C15.4396 21.8271 15.8337 21.7432 16.0548 21.6844C16.5933 21.5411 17.079 21.3576 17.581 21.1076C19.3154 20.2441 20.6895 18.7615 21.4192 16.9663C21.7498 16.153 21.936 15.3195 21.9915 14.4052C22.0028 14.2197 22.0028 13.7268 21.9916 13.5415C21.9403 12.6947 21.7817 11.9389 21.4942 11.1712C20.8665 9.49533 19.6589 8.05123 18.1135 7.12853C17.7376 6.90413 17.2813 6.68103 16.8985 6.53456C16.1262 6.23908 15.3815 6.07432 14.5323 6.01114C14.3897 6.00053 13.7447 5.99591 13.591 6.00441Z"
+                            fill="currentColor"></path>
+                    </svg>
+
+                </a>
+
+                <a class="social-link" title="Instagram" href="https://instagram.com/pixelunion" target="_blank">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.1213 6.00507C10.5981 6.02559 9.96558 6.0872 9.6431 6.14903C7.77505 6.50724 6.50522 7.77703 6.14804 9.644C6.0118 10.3562 6 10.7031 6 14.0006C6 17.298 6.0118 17.6449 6.14804 18.3572C6.50522 20.2241 7.776 21.4948 9.6431 21.852C10.3554 21.9882 10.7023 22 14 22C17.2977 22 17.6446 21.9882 18.3569 21.852C20.224 21.4948 21.4948 20.2241 21.852 18.3572C21.9882 17.6449 22 17.298 22 14.0006C22 10.7031 21.9882 10.3562 21.852 9.644C21.4935 7.77016 20.2144 6.49675 18.3396 6.14716C17.6551 6.01955 17.3874 6.00985 14.334 6.00234C12.707 5.99836 11.2612 5.99957 11.1213 6.00507ZM17.6262 7.50836C18.2783 7.59344 18.7654 7.73848 19.1427 7.95992C19.3813 8.09994 19.9011 8.61966 20.0411 8.85821C20.2728 9.253 20.4142 9.74012 20.4952 10.4223C20.5551 10.9261 20.5551 17.075 20.4952 17.5789C20.4142 18.261 20.2728 18.7482 20.0411 19.143C19.9011 19.3815 19.3813 19.9012 19.1427 20.0412C18.7479 20.2729 18.2608 20.4143 17.5785 20.4953C17.0747 20.5552 10.9253 20.5552 10.4215 20.4953C9.73923 20.4143 9.25207 20.2729 8.85726 20.0412C8.61869 19.9012 8.09893 19.3815 7.9589 19.143C7.72724 18.7482 7.58578 18.261 7.50476 17.5789C7.44493 17.075 7.44493 10.9261 7.50476 10.4223C7.56313 9.93096 7.62729 9.63856 7.74686 9.31938C7.88402 8.95319 8.02204 8.72965 8.28724 8.44428C8.87822 7.8083 9.55222 7.55184 10.8191 7.48098C11.5114 7.44227 17.2981 7.46552 17.6262 7.50836ZM17.9602 8.80646C17.7222 8.8876 17.4343 9.18659 17.358 9.43194C17.1268 10.175 17.8258 10.874 18.569 10.6429C18.8334 10.5606 19.1165 10.2776 19.1987 10.013C19.2689 9.78758 19.251 9.52441 19.1511 9.31187C19.071 9.14148 18.8248 8.90306 18.6554 8.83162C18.4699 8.75347 18.1498 8.74189 17.9602 8.80646ZM13.6183 9.8962C12.6459 9.99712 11.7694 10.4112 11.0899 11.0907C9.99978 12.1807 9.61075 13.7764 10.076 15.2492C10.4746 16.5107 11.4897 17.5257 12.7513 17.9243C13.5638 18.1809 14.4362 18.1809 15.2487 17.9243C16.5103 17.5257 17.5254 16.5107 17.924 15.2492C18.1806 14.4367 18.1806 13.5644 17.924 12.752C17.5254 11.4904 16.5103 10.4754 15.2487 10.0769C14.7428 9.91709 14.1016 9.84604 13.6183 9.8962ZM14.6362 11.4119C14.9255 11.4811 15.4416 11.7393 15.6794 11.9337C15.9731 12.1738 16.2113 12.4794 16.3856 12.8396C16.5969 13.2766 16.6509 13.5128 16.6509 14.0006C16.6509 14.4884 16.5969 14.7246 16.3856 15.1615C16.1137 15.7235 15.7253 16.1118 15.161 16.3855C14.7247 16.5972 14.4883 16.6513 14 16.6513C13.5117 16.6513 13.2753 16.5972 12.839 16.3855C12.2747 16.1118 11.8863 15.7235 11.6144 15.1615C11.5298 14.9866 11.4355 14.7433 11.4049 14.6208C11.3288 14.3169 11.3288 13.6843 11.4049 13.3803C11.482 13.0724 11.7369 12.5611 11.933 12.3213C12.3447 11.8177 12.9934 11.449 13.6224 11.3611C13.8845 11.3244 14.3734 11.3489 14.6362 11.4119Z"
+                            fill="currentColor"></path>
+                    </svg>
+
+
+                </a>
+
+                <a class="social-link" title="Pinterest" href="https://pinterest.com/pixelunion" target="_blank">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.9997 6.01021C16.1242 6.01973 18.1595 6.86492 19.6658 8.36307C20.9047 9.6169 21.6999 11.2412 21.9305 12.9887C22.1611 14.7362 21.8143 16.5112 20.9431 18.0434C20.2428 19.2642 19.2311 20.2773 18.0112 20.9792C16.7914 21.681 15.4071 22.0466 13.9997 22.0385C13.2304 22.0438 12.4641 21.9404 11.7237 21.7312C12.127 21.0781 12.3959 20.4923 12.54 20.0025L13.1066 17.8033C13.2411 18.0722 13.5003 18.3027 13.8749 18.5044C14.259 18.6965 14.6432 18.8021 15.0657 18.8021C15.9012 18.8021 16.6503 18.562 17.3129 18.0818C17.9941 17.577 18.5252 16.8965 18.8495 16.1131C19.2205 15.2222 19.4036 14.2642 19.3873 13.2993C19.3873 12.0508 18.9071 10.9848 17.9564 10.0725C17.4691 9.61366 16.8957 9.25603 16.2693 9.0203C15.6429 8.78457 14.9759 8.67543 14.307 8.6992C13.4139 8.6992 12.5784 8.85285 11.8293 9.16017C10.8999 9.51337 10.0962 10.1345 9.52005 10.9449C8.94391 11.7552 8.62125 12.7183 8.59295 13.7122C8.59295 14.4325 8.7274 15.0663 9.0059 15.6137C9.2748 16.1515 9.67815 16.5357 10.2255 16.7662C10.3216 16.8046 10.408 16.8046 10.4752 16.7662C10.5425 16.7373 10.5905 16.6701 10.6193 16.5741L10.7922 15.921C10.8402 15.777 10.8114 15.6329 10.6865 15.4889C10.312 15.0555 10.1163 14.4959 10.1391 13.9235C10.1307 13.4044 10.2287 12.889 10.427 12.4092C10.6254 11.9294 10.9198 11.4953 11.2923 11.1336C11.6648 10.7719 12.1074 10.4903 12.5929 10.3061C13.0783 10.122 13.5963 10.0392 14.115 10.0629C15.1618 10.0629 15.9781 10.351 16.5543 10.9176C17.1401 11.4938 17.4378 12.2333 17.4378 13.1456C17.4378 13.9139 17.3321 14.6246 17.1209 15.268C16.9511 15.8502 16.645 16.3836 16.2277 16.8238C15.8436 17.2079 15.3922 17.4 14.8833 17.4C14.4703 17.4 14.1342 17.2559 13.8653 16.9486C13.606 16.6413 13.5196 16.2764 13.6156 15.8634C13.7622 15.3501 13.9127 14.8379 14.067 14.3269L14.2398 13.6258C14.2974 13.3761 14.3262 13.1744 14.3262 13.0016C14.3262 12.6558 14.2302 12.3677 14.0574 12.1469C13.8653 11.926 13.606 11.8107 13.2603 11.8107C12.8281 11.8107 12.4632 12.0028 12.1751 12.4062C11.887 12.7999 11.7333 13.2993 11.7333 13.9043C11.7381 14.2788 11.7963 14.6507 11.9062 15.0087L11.9638 15.1528C11.3876 17.6305 11.0514 19.0902 10.9266 19.5128C10.8114 20.041 10.7729 20.6652 10.8018 21.3758C9.37761 20.7455 8.16639 19.7163 7.31433 18.4127C6.46226 17.109 6.00578 15.5866 6 14.0291C6 11.8203 6.77788 9.91884 8.34326 8.36307C9.07486 7.60398 9.95418 7.00276 10.927 6.59645C11.8998 6.19014 12.9455 5.98736 13.9997 6.00061V6.01021Z"
+                            fill="currentColor"></path>
+                    </svg>
+
+
+                </a>
+
+                <a class="social-link" title="Snapchat" href="https://www.snapchat.com/" target="_blank">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21.9377 17.7044C21.8336 17.4352 21.6317 17.2168 21.3737 17.0943L21.2511 17.0279L21.0304 16.9158C20.3358 16.5611 19.7367 16.0397 19.2853 15.3968C19.1701 15.2264 19.0703 15.0458 18.987 14.8572C18.9543 14.7576 18.9543 14.6995 18.9788 14.6497C19.0033 14.6082 19.036 14.5709 19.0769 14.546C19.3164 14.3817 19.5576 14.2198 19.8003 14.0604C20.071 13.8803 20.2952 13.6369 20.4542 13.3507C20.5708 13.1342 20.6287 12.8902 20.6222 12.6436C20.6156 12.397 20.5447 12.1565 20.4167 11.9468C20.2887 11.7371 20.1082 11.5656 19.8937 11.4498C19.6791 11.3341 19.4382 11.2782 19.1954 11.2879C19.0325 11.2882 18.8703 11.3105 18.7131 11.3543C18.7172 10.9808 18.7131 10.5824 18.6764 10.1964C18.6355 9.4684 18.4154 8.76244 18.0363 8.1432C17.6572 7.52396 17.1311 7.01124 16.5062 6.652C15.7409 6.2141 14.8752 5.98932 13.9969 6.00039C13.0773 6.00039 12.2395 6.22036 11.4916 6.652C10.865 7.00954 10.3373 7.52176 9.95726 8.14128C9.57723 8.7608 9.35715 9.46762 9.31736 10.1964C9.28467 10.5865 9.27649 10.985 9.28467 11.3543C9.1249 11.3098 8.95992 11.2874 8.79424 11.2879C8.55192 11.2795 8.31171 11.3362 8.09789 11.4523C7.88407 11.5684 7.70421 11.7397 7.57649 11.949C7.44877 12.1583 7.37772 12.3981 7.37052 12.6442C7.36332 12.8904 7.42022 13.134 7.53547 13.3507C7.69516 13.6388 7.92086 13.8837 8.19346 14.0645L8.56537 14.3135L8.90458 14.5377C8.94545 14.5667 8.98632 14.6041 9.01084 14.6497C9.03945 14.7037 9.03945 14.7618 9.00267 14.8697C8.92093 15.0565 8.81876 15.2308 8.70433 15.4009C8.2655 16.0287 7.68542 16.5409 7.01235 16.8951C6.62409 17.1026 6.22358 17.2395 6.05601 17.7044C5.92932 18.0572 6.01514 18.4597 6.33801 18.7959C6.45653 18.9204 6.5914 19.0283 6.7467 19.1114C7.06139 19.2857 7.39652 19.4226 7.7439 19.5181C7.81667 19.5364 7.88579 19.5673 7.94825 19.6094C8.06677 19.7132 8.04633 19.8709 8.20572 20.1074C8.28746 20.2236 8.38555 20.3274 8.49998 20.4104C8.83102 20.6428 9.20293 20.6594 9.59527 20.6719C9.95083 20.6843 10.3513 20.7009 10.8132 20.8545C11.0053 20.9168 11.2014 21.0413 11.4303 21.1865C12.1841 21.7172 13.0797 22.0011 13.9969 22C15.2556 22 16.0158 21.5269 16.5716 21.1824C16.7623 21.051 16.9665 20.9411 17.1806 20.8545C17.6383 20.7009 18.0388 20.6885 18.3985 20.6719C18.7908 20.6553 19.1627 20.6428 19.4937 20.4104C19.6286 20.315 19.7471 20.1863 19.8289 20.0369C19.9433 19.8418 19.9392 19.7049 20.0455 19.6094C20.1027 19.5679 20.1681 19.5388 20.2335 19.5222C20.589 19.4268 20.9282 19.2898 21.247 19.1114C21.4097 19.0241 21.5563 18.909 21.6802 18.771L21.6843 18.7669C21.9908 18.4348 22.0685 18.0447 21.9418 17.7044H21.9377ZM20.8179 18.3145C20.1313 18.6963 19.6777 18.659 19.3262 18.8872C19.0238 19.0864 19.2036 19.5098 18.9829 19.6592C18.7172 19.8501 17.9203 19.6467 16.8986 19.9912C16.0567 20.2735 15.5172 21.0911 13.9969 21.0911C12.4806 21.0911 11.9534 20.2776 11.0952 19.9871C10.0734 19.6467 9.28058 19.846 9.01084 19.655C8.79424 19.5056 8.96997 19.0823 8.67163 18.8872C8.31607 18.6548 7.86242 18.6963 7.17991 18.3145C6.74261 18.0696 6.99191 17.9202 7.13496 17.8496C9.61162 16.6294 10.008 14.7493 10.0244 14.6124C10.0448 14.4422 10.0694 14.3094 9.88544 14.1351C9.7097 13.9691 8.92502 13.4793 8.70433 13.3216C8.34468 13.0684 8.18938 12.8111 8.30381 12.4998C8.38555 12.2799 8.58581 12.201 8.79424 12.201C8.85963 12.201 8.92502 12.2093 8.99041 12.2218C9.38684 12.3089 9.77101 12.5123 9.9917 12.5662L10.0734 12.5745C10.196 12.5745 10.2369 12.5164 10.2287 12.3795C10.2001 11.9395 10.1388 11.0804 10.2083 10.2794C10.2354 9.4885 10.5398 8.73344 11.0666 8.15027C11.4396 7.7434 11.8941 7.42247 12.3996 7.20912C12.9051 6.99577 13.4498 6.89495 13.9969 6.91347C15.7869 6.91347 16.7269 7.9137 16.9272 8.14612C17.454 8.72929 17.7583 9.48435 17.7854 10.2753C17.8549 11.0763 17.7936 11.9354 17.765 12.3712C17.7568 12.5164 17.8018 12.5704 17.9203 12.5704C17.9448 12.5704 17.9734 12.5704 18.002 12.5579C18.2227 12.504 18.6069 12.3048 19.0033 12.2176C19.0676 12.2023 19.1335 12.1953 19.1995 12.1969C19.4079 12.1969 19.6082 12.2799 19.6899 12.4957C19.8043 12.807 19.649 13.0643 19.2853 13.3175C19.0687 13.471 18.284 13.9649 18.1083 14.1309C17.9244 14.3052 17.9448 14.4381 17.9693 14.6041C17.9857 14.7493 18.378 16.6294 20.8588 17.8413C21.0059 17.9161 21.2511 18.0696 20.8179 18.3145Z"
+                            fill="currentColor" stroke="currentColor" stroke-width="0"></path>
+                    </svg>
+
+
+                </a>
+
+                <a class="social-link" title="TikTok" href="https://tiktok.com/" target="_blank">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.4861 5H17.6354C17.6354 5 17.4557 8.79324 22 9.07128V12.0006C22 12.0006 19.5694 12.1396 17.6354 10.7494L17.6671 16.8067C17.6671 17.8913 17.3247 18.9514 16.6832 19.853C16.0418 20.7546 15.1301 21.4572 14.0635 21.8718C12.997 22.2863 11.8235 22.3943 10.6916 22.182C9.55971 21.9697 8.52029 21.4467 7.70487 20.6791C6.88946 19.9115 6.3347 18.9339 6.11081 17.87C5.88691 16.806 6.00395 15.7036 6.44709 14.7022C6.89024 13.7008 7.63959 12.8454 8.6003 12.2443C9.56101 11.6432 10.6899 11.3234 11.8441 11.3254H12.6579V14.3342C12.1269 14.1796 11.5576 14.1863 11.0309 14.3533C10.5043 14.5203 10.0471 14.8392 9.72446 15.2645C9.40182 15.6898 9.23016 16.1999 9.23391 16.7221C9.23766 17.2444 9.41662 17.7523 9.74533 18.1735C10.074 18.5946 10.5358 18.9077 11.0648 19.068C11.5938 19.2284 12.1631 19.2279 12.6918 19.0665C13.2205 18.9052 13.6816 18.5914 14.0094 18.1696C14.3372 17.7478 14.5152 17.2396 14.5178 16.7174L14.4861 5Z"
+                            fill="currentColor"></path>
+                    </svg>
+
+
+                </a>
+
+
+
+            </div>
+        </div>
+
+        <hr class="hr1">
+    </div>
+
+
+    <div class="head3" id="head3stick">
+        <div>
+            <img id="imgemp" src="../imgs/empire-2_1040x300.webp" alt="">
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">All Categories<svg aria-hidden="true" focusable="false" role="presentation"
+                    width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="icon-chevron-down">
+                    <path class="icon-chevron-down-left" d="M4 4.5L7 1.5" stroke="currentColor" stroke-width="1.25"
+                        stroke-linecap="square"></path>
+                    <path class="icon-chevron-down-right" d="M4 4.5L1 1.5" stroke="currentColor" stroke-width="1.25"
+                        stroke-linecap="square"></path>
+                </svg></button>
+
+            <div class="dropdown-content">
+                <a href="#">Apparels</a>
+                <a href="#">Bar Tools</a>
+                <a href="#">Books</a>
+                <a href="#">Cameras</a>
+                <a href="#">Apparels</a>
+                <a href="#">Bar Tools</a>
+                <a href="#">Books</a>
+                <a href="#">Cameras</a>
+                <a href="#">Apparels</a>
+                <a href="#">Bar Tools</a>
+                <a href="#">Books</a>
+                <a href="#">Cameras</a>
+            </div>
+        </div>
+        <div class="searchbar">
+            <form class="form1" action="">
+                <input type="text" placeholder="What are You looking for?">
+                <span id="searchicon"><svg aria-hidden="true" focusable="false" role="presentation"
+                        xmlns="http://www.w3.org/2000/svg" width="23" height="24" fill="none" viewBox="0 0 23 24">
+                        <path d="M21 21L15.5 15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        </path>
+                        <circle cx="10" cy="9" r="8" stroke="currentColor" stroke-width="2"></circle>
+                    </svg></span>
+            </form>
+        </div>
+        <div class="chaticon">
+            <i class="fa-regular fa-message"></i>
+            <div class="expsup">
+                <span>Expert Support</span>
+                <span>Available 24/7 via chat</span>
+            </div>
+        </div>
+        <div class="login">
+            <i class="fa-regular fa-user"></i>
+            <span>Login</span>
+        </div>
+        <div>
+            <i class="cart fa-solid fa-cart-plus"></i>
+        </div>
+    </div>
+
+    <div class="head4">
+        <div class="head4lft">
+            <a href="">Categories<svg aria-hidden="true" focusable="false" role="presentation" width="8" height="6"
+                    viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="icon-chevron-down"></svg></a>
+            <a href="">Gifts<svg aria-hidden="true" focusable="false" role="presentation" width="8" height="6"
+                    viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="icon-chevron-down"></svg></a>
+            <a href="">Sale</a>
+            <a href="">About<svg aria-hidden="true" focusable="false" role="presentation" width="8" height="6"
+                    viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="icon-chevron-down"></svg></a>
+            <a href="">Contact</a>
+            <a href="">Theme</a>
+            <a href="">Features</a>
+        </div>
+        <div class="head4right">
+            <a href="">Help</a>
+            <a href="">Shipping & Returns</a>
+            <a href="">Gift Card</a>
+        </div>
+    </div>
+
+
+
+
+
+    
+    <div class="section1 w3-display-container">
+        <div class="parent">
+            <div class="imgdiv">
+                <img class="mySlides" src="../imgs/bg1.webp" style="width:100%;">
+            </div>
+
+            <div class="uptext">
+                <div>
+                    <h1>Everyday Celebrations</h1>
+                    <h3>Welcome the new season with updated cookware from Cuisine to help you in the kitchen.</h3>
+                </div>
+                <div class="buttons">
+                    <button class="sec1btn1">Shop Bar</button>
+                    <button class="sec1btn2">Shop Kitchen</button>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="parent">
+            <div class="imgdiv">
+                <img class="mySlides" src="../imgs/bg2.webp" style="width:100%">
+            </div>
+
+            
+           
+        </div>
+        <div class="parent">
+            <div class="imgdiv">
+                <img class="mySlides" src="../imgs/pexels-andrea-piacquadio-761854.jpg" style="width:100%">
+            </div>
+           
+        </div>
+        <div class="parent">
+            <div class="imgdiv">
+                <img class="mySlides" src="../imgs/pexels-maarten-van-den-heuvel-2284166.jpg" style="width:100%">
+            </div>
+           
+        </div>
+
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    </div>
+
+
+    <div class="section2">
+        <div class="icons">
+            <svg class="icon-delivery-cart " aria-hidden="true" focusable="false" role="presentation"
+                xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <path
+                    d="M6.33789 37.5833C6.33789 39.042 6.91735 40.441 7.9488 41.4724C8.98025 42.5039 10.3792 43.0833 11.8379 43.0833C13.2966 43.0833 14.6955 42.5039 15.727 41.4724C16.7584 40.441 17.3379 39.042 17.3379 37.5833C17.3379 36.1246 16.7584 34.7257 15.727 33.6942C14.6955 32.6628 13.2966 32.0833 11.8379 32.0833C10.3792 32.0833 8.98025 32.6628 7.9488 33.6942C6.91735 34.7257 6.33789 36.1246 6.33789 37.5833V37.5833Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M13.6714 32.428V2.75C13.6714 2.26377 13.4782 1.79746 13.1344 1.45364C12.7906 1.10982 12.3243 0.916668 11.8381 0.916668H8.17139"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M16.9951 39.4167H33.1009C33.5737 39.4166 34.0283 39.5992 34.3696 39.9263L37.6696 43.0833"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M21.0046 35.75H33.8379C34.3241 35.75 34.7904 35.5568 35.1343 35.213C35.4781 34.8692 35.6712 34.4029 35.6712 33.9167V21.0833C35.6712 20.5971 35.4781 20.1308 35.1343 19.787C34.7904 19.4432 34.3241 19.25 33.8379 19.25H17.3379V29.3333"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M30.1712 11.9167C30.1712 11.4304 29.9781 10.9641 29.6343 10.6203C29.2904 10.2765 28.8241 10.0833 28.3379 10.0833H19.1712C18.685 10.0833 18.2187 10.2765 17.8749 10.6203C17.531 10.9641 17.3379 11.4304 17.3379 11.9167V19.25H30.1712V11.9167Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M32.0046 32.0833H28.3379" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                <path d="M22.8377 15.5833H21.0044" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <h2>Free Shipping</h2>
+            <h5>When you spend $50 or more</h5>
+        </div>
+
+
+        <div class="icons"><svg class="icon-gift-card " aria-hidden="true" focusable="false" role="presentation"
+                xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M1 8C1 6.89543 1.89543 6 3 6H41C42.1046 6 43 6.89543 43 8V35C43 36.1046 42.1046 37 41 37H3C1.89543 37 1 36.1046 1 35V8Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M1 22H43" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                <path d="M22 37L22 22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M31.0002 18C29.0002 20 25.072 21.1568 22.4575 21.8597C23.1587 19.2446 23.8288 15.63 25.5002 13.5C27.5002 11 30.5002 11.5 31.5002 12.5C32.5002 13.5 33.2354 15.7648 31.0002 18Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M22.5 22C24.1667 24 29.6 28.5 32 30.5" stroke="currentColor" stroke-width="2"></path>
+                <path
+                    d="M22.1162 22.8254C22.6496 22.9688 23.1982 22.6527 23.3416 22.1193C23.4849 21.586 23.1688 21.0374 22.6355 20.894L22.1162 22.8254ZM13.9999 12.5L13.2964 11.7893L13.2964 11.7893L13.9999 12.5ZM13.2928 19.2071C14.5728 20.4871 16.1868 21.2132 17.7429 21.7075C18.524 21.9557 19.3097 22.1511 20.0484 22.3257C20.8 22.5034 21.4822 22.655 22.1162 22.8254L22.6355 20.894C21.9622 20.713 21.2232 20.5483 20.5085 20.3794C19.7809 20.2074 19.0551 20.0259 18.3484 19.8014C16.929 19.3505 15.6622 18.7481 14.707 17.7929L13.2928 19.2071ZM22.4949 16.9005C22.2065 14.0159 20.5141 12.1706 18.6152 11.3231C17.6779 10.9048 16.6794 10.7237 15.7623 10.7836C14.8568 10.8427 13.9472 11.1452 13.2964 11.7893L14.7034 13.2107C14.913 13.0032 15.3085 12.8174 15.8925 12.7793C16.4649 12.742 17.1401 12.8549 17.8001 13.1495C19.0961 13.7278 20.2933 14.9841 20.5049 17.0995L22.4949 16.9005ZM13.2964 11.7893C12.5762 12.5022 11.897 13.6432 11.7321 14.9714C11.5611 16.3482 11.9533 17.8676 13.2928 19.2071L14.707 17.7929C13.8113 16.8972 13.6205 15.9937 13.7168 15.2178C13.8192 14.3934 14.2576 13.652 14.7034 13.2107L13.2964 11.7893Z"
+                    fill="currentColor"></path>
+                <path d="M22 22C19.3333 22.5 14.2 27.8 13 31" stroke="currentColor" stroke-width="2"></path>
+            </svg>
+            <h2>Gift Cards</h2>
+            <h5>For your loved ones in any amount</h5>
+        </div>
+
+
+        <div class="icons"><svg class="icon-store " aria-hidden="true" focusable="false" role="presentation"
+                xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <path
+                    d="M39.875 23.375V39.875C39.875 40.6043 39.5853 41.3038 39.0695 41.8195C38.5538 42.3353 37.8543 42.625 37.125 42.625H6.875C6.14565 42.625 5.44618 42.3353 4.93046 41.8195C4.41473 41.3038 4.125 40.6043 4.125 39.875V23.375"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M38.7713 1.375H5.22867C4.91571 1.37495 4.61208 1.48151 4.3678 1.67714C4.12352 1.87276 3.95317 2.14577 3.88483 2.45117L1.375 13.75C1.375 14.844 1.8096 15.8932 2.58318 16.6668C3.35677 17.4404 4.40598 17.875 5.5 17.875C6.59402 17.875 7.64323 17.4404 8.41682 16.6668C9.1904 15.8932 9.625 14.844 9.625 13.75C9.625 14.844 10.0596 15.8932 10.8332 16.6668C11.6068 17.4404 12.656 17.875 13.75 17.875C14.844 17.875 15.8932 17.4404 16.6668 16.6668C17.4404 15.8932 17.875 14.844 17.875 13.75C17.875 14.844 18.3096 15.8932 19.0832 16.6668C19.8568 17.4404 20.906 17.875 22 17.875C23.094 17.875 24.1432 17.4404 24.9168 16.6668C25.6904 15.8932 26.125 14.844 26.125 13.75C26.125 14.844 26.5596 15.8932 27.3332 16.6668C28.1068 17.4404 29.156 17.875 30.25 17.875C31.344 17.875 32.3932 17.4404 33.1668 16.6668C33.9404 15.8932 34.375 14.844 34.375 13.75C34.375 14.844 34.8096 15.8932 35.5832 16.6668C36.3568 17.4404 37.406 17.875 38.5 17.875C39.594 17.875 40.6432 17.4404 41.4168 16.6668C42.1904 15.8932 42.625 14.844 42.625 13.75L40.1133 2.45117C40.0457 2.14576 39.8758 1.8726 39.6317 1.6769C39.3877 1.48121 39.0841 1.3747 38.7713 1.375Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M34.375 30.25C34.375 28.7913 33.7955 27.3924 32.7641 26.3609C31.7326 25.3295 30.3337 24.75 28.875 24.75C27.4163 24.75 26.0174 25.3295 24.9859 26.3609C23.9545 27.3924 23.375 28.7913 23.375 30.25V42.625H34.375V30.25Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M9.625 28.875H17.875V37.125H9.625V28.875Z" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <h2>Store Pickup</h2>
+            <h5>Pickup order yourself, for free </h5>
+        </div>
+
+
+        <div class="icons"><svg class="icon-discount " aria-hidden="true" focusable="false" role="presentation"
+                xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <path d="M14.7217 29.2783L29.3883 14.6117" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                <path
+                    d="M13.8052 16.445C13.8052 17.1743 14.0949 17.8738 14.6106 18.3895C15.1264 18.9053 15.8258 19.195 16.5552 19.195C17.2845 19.195 17.984 18.9053 18.4997 18.3895C19.0154 17.8738 19.3052 17.1743 19.3052 16.445C19.3052 15.7157 19.0154 15.0162 18.4997 14.5005C17.984 13.9847 17.2845 13.695 16.5552 13.695C15.8258 13.695 15.1264 13.9847 14.6106 14.5005C14.0949 15.0162 13.8052 15.7157 13.8052 16.445V16.445Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M24.8052 27.445C24.8052 28.1743 25.0949 28.8738 25.6106 29.3895C26.1264 29.9053 26.8258 30.195 27.5552 30.195C28.2845 30.195 28.984 29.9053 29.4997 29.3895C30.0154 28.8738 30.3052 28.1743 30.3052 27.445C30.3052 26.7157 30.0154 26.0162 29.4997 25.5005C28.984 24.9847 28.2845 24.695 27.5552 24.695C26.8258 24.695 26.1264 24.9847 25.6106 25.5005C25.0949 26.0162 24.8052 26.7157 24.8052 27.445V27.445Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M43.0833 22C43.0805 20.5302 42.6361 19.0951 41.8077 17.881C40.9793 16.6669 39.8052 15.7297 38.4377 15.191C39.027 13.8437 39.1964 12.35 38.9237 10.905C38.651 9.45997 37.9489 8.13074 36.9091 7.09091C35.8692 6.05108 34.54 5.34898 33.095 5.07628C31.65 4.80359 30.1563 4.97298 28.809 5.56233C28.2725 4.19335 27.3358 3.01787 26.1212 2.18928C24.9065 1.3607 23.4703 0.917484 22 0.917484C20.5296 0.917484 19.0934 1.3607 17.8788 2.18928C16.6642 3.01787 15.7275 4.19335 15.191 5.56233C13.8437 4.97298 12.35 4.80359 10.905 5.07628C9.45996 5.34898 8.13074 6.05108 7.09091 7.09091C6.05108 8.13074 5.34897 9.45997 5.07628 10.905C4.80358 12.35 4.97297 13.8437 5.56233 15.191C4.19335 15.7275 3.01787 16.6642 2.18928 17.8788C1.36069 19.0934 0.91748 20.5297 0.91748 22C0.91748 23.4703 1.36069 24.9066 2.18928 26.1212C3.01787 27.3358 4.19335 28.2725 5.56233 28.809C4.97297 30.1563 4.80358 31.65 5.07628 33.095C5.34897 34.54 6.05108 35.8693 7.09091 36.9091C8.13074 37.9489 9.45996 38.651 10.905 38.9237C12.35 39.1964 13.8437 39.027 15.191 38.4377C15.7275 39.8066 16.6642 40.9821 17.8788 41.8107C19.0934 42.6393 20.5296 43.0825 22 43.0825C23.4703 43.0825 24.9065 42.6393 26.1212 41.8107C27.3358 40.9821 28.2725 39.8066 28.809 38.4377C30.1563 39.027 31.65 39.1964 33.095 38.9237C34.54 38.651 35.8692 37.9489 36.9091 36.9091C37.9489 35.8693 38.651 34.54 38.9237 33.095C39.1964 31.65 39.027 30.1563 38.4377 28.809C39.8052 28.2703 40.9793 27.3331 41.8077 26.119C42.6361 24.9049 43.0805 23.4698 43.0833 22V22Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <h2>Amazing Value</h2>
+            <h5>Offering nrand new daily discounts</h5>
+        </div>
+    </div>
+
+    <div class="section3 grid grid-cols-3 grid-rows-2 gap-3 m-6">
+        <div class="sec31 col-span-2 relative">
+            <div>
+                <img class="h-96 w-full" src="../imgs/gridimg1.webp" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-6">
+                <div class="sec3txt" data-aos="fade-up">
+                    <h2 class="text-white text-4xl font-bold">Freshen up your kitchen</h2>
+                    <h4 class="text-white font-normal text-xl">Welcome the new season with updated cookware from
+                        Cuisine to help you in the kitchen.</h4>
+                </div>
+                <button
+                    class="sec3btn proj-anim text-base font-bold text-white py-1 bg-red-500 border-2 border-red-500 w-40">Shop
+                    Brand</button>
+
+            </div>
+        </div>
+        <div class="sec32 relative">
+            <div>
+                <img class="h-96 w-[400px]" src="../imgs/gridimg2.webp" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-6">
+                <div class="sec3txt" data-aos="fade-up">
+                    <h2 class=" text-4xl font-bold">Inspire Creativity</h2>
+                    <h4 class=" font-normal text-xl">Add some personality and warmth to your home office!</h4>
+                </div>
+                <button
+                    class="sec3btn proj-anim text-base font-bold text-white py-1 bg-red-500 border-2 border-red-500 w-40">Shop
+                    All</button>
+
+            </div>
+        </div>
+        <div class="sec33 relative">
+            <div>
+                <img class="h-96" src="../imgs/pexels-pixabay-46199.jpg" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-6">
+                <div class="sec3txt" data-aos="fade-up">
+                    <h2 class=" text-4xl font-bold">Cook up a Storm</h2>
+                    <h4 class=" font-normal text-xl">Browse our quality pots and pans</h4>
+                </div>
+                <button
+                    class="sec3btn proj-anim text-base font-bold text-white py-1 bg-red-500 border-2 border-red-500 w-40">Shop
+                    All</button>
+
+            </div>
+        </div>
+        <div class="sec34 col-span-2 relative">
+            <div>
+                <img class="h-96 w-full" src="../imgs/gridimg4.webp" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-6">
+                <div class="sec3txt" data-aos="fade-up">
+                    <h2 class="text-white text-4xl font-bold">Upto 50% Off</h2>
+                    <h4 class="text-white font-normal text-xl">Save Big on Home decor selection today</h4>
+                </div>
+                <button
+                    class="sec3btn proj-anim text-base font-bold text-white py-1 bg-red-500 border-2 border-red-500 w-40">Shop
+                    Sale</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section4">
+        <div>
+            <h3 id="sec4head">Deals of the Week</h3>
+
+        </div>
+        <div class="sec4under">
+
+            <div class="sec4left">
+                <div class="lftimg">
+                    <img src="../imgs/sec4img.webp" alt="">
+                </div>
+                <div class="lfttxt" data-aos="fade-up">
+                    <h2>Seasonal Clearance Sale</h2>
+                    <h1>Save Upto 40%
+                    </h1>
+                </div>
+            </div>
+
+            <div class="sec4right">
+                <div class="sec4up">
+
+                    <div class="box">
+                        <div class="checkbox">
+                            <input type="checkbox" id="cmp" name="" value="Compare">
+                            <label for="cmp">Compare</label>
+                        </div>
+                        <img src="../imgs/sec4-1.avif" alt="">
+                        <button class="savebtn">Save upto 30%</button>
+                        <h1>$35.00 - $50.00</h1>
+                        <h3>Home City Candles</h3>
+                        <h4>In stock</h4>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                            </div>
+                            <p>2 Reviews</p>
+                        </div>
+                        <div class="sec4btns">
+                            <button class="QS">Quick Shop</button>
+                            <button class="ATC">Add to Cart</button>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="box">
+                        <div class="checkbox">
+                            <input type="checkbox" id="cmp" name="" value="Compare">
+                            <label for="cmp">Compare</label>
+                        </div>
+                        <img src="../imgs/sec4-2.avif" alt="">
+                        <button class="savebtn">Save 29%</button>
+                        <h1>$49.99</h1>
+                        <h3>Appetizer Serving Set</h3>
+                        <h4>Only 4 left!</h4>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                            </div>
+                            <p>1 Review</p>
+                        </div>
+                        <div class="sec4btns">
+                            <button class="QS">Quick Shop</button>
+                            <button class="ATC">Add to Cart</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="sec4dn">
+                    <div class="box">
+                        <div class="checkbox">
+                            <input type="checkbox" id="cmp" name="" value="Compare">
+                            <label for="cmp">Compare</label>
+                        </div>
+                        <img src="../imgs/sec4-3.avif" alt="">
+                        <button class="savebtn">Save 40%</button>
+                        <h1>$12.00</h1>
+                        <h3>Drink Wine Book</h3>
+                        <h4>In stock</h4>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                            </div>
+                            <p>2 Reviews</p>
+                        </div>
+                        <div class="sec4btns">
+                            <button class="QS">Quick Shop</button>
+                            <button class="ATC">Add to Cart</button>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="box">
+                        <div class="checkbox">
+                            <input type="checkbox" id="cmp" name="" value="Compare">
+                            <label for="cmp">Compare</label>
+                        </div>
+                        <img src="../imgs/sec4-4.avif" alt="">
+                        <button class="savebtn">Save 37%</button>
+                        <h1>$38.00</h1>
+                        <h3>Large Soup Pot</h3>
+                        <h4>In stock</h4>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                            </div>
+                            <p>5 Reviews</p>
+                        </div>
+                        <div class="sec4btns">
+                            <button class="QS">Quick Shop</button>
+                            <button class="ATC">Add to Cart</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section5">
+        <div class="section5lft">
+
+            <div class="img-zoom-container">
+                <div class="sec5imgs">
+                    <img id="myimage" src="../imgs/sec5-1.avif" width="100" height="100">
+                    <img id="" src="../imgs/sec5-2.avif" width="100" height="100">
+                    <img id="" src="../imgs/sec5-3.avif" width="100" height="100">
+                    <img id="" src="../imgs/sec5-4.avif" width="100" height="100">
+                </div>
+
+                <div id="myresult" class="img-zoom-result"></div>
+            </div>
+        </div>
+
+
+
+        <div class="section5right">
+
+            <h2 class="headtext text-4xl mt-8" data-aos="fade-up">Stackable Dish Set</h2>
+            <div class="sec5price">
+                <button class="sec1btn1">Save 10%</button>
+                <h3 id="pricecut">$50.00</h3>
+                <h3 id="pricenew">$45.00</h3>
+
+            </div>
+
+            <h3 class="">Availability: <span id="lowstck">Low Stock</span></h3>
+            <h4 class="">Size: Small</h4>
+
+            <div class="sec5btns">
+                <button class="" id="ATC5">Add to Cart</button>
+                <button class="" id="QS5">BUY IT NOW</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section6">
+        <div>
+            <h3 id="sec4head">
+                Trending Collections</h3>
+
+        </div>
+
+        <div class="sec6cards">
+            <div class="card">
+                <h1 data-aos="fade-up">Gifts for Birthdays</h1>
+            </div>
+            <div class="card" id="card2">
+
+                <h1 data-aos="fade-up">Outdoor Dining</h1>
+            </div>
+            <div class="card" id="card3">
+                <h1 data-aos="fade-up">Glassware & Bar Tools</h1>
+
+            </div>
+            <div class="card" id="card4">
+                <h1 data-aos="fade-up">Garden Accessories</h1>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="section7">
+        <div>
+            <h3 id="sec4head">
+                Gifts by Price</h3>
+        </div>
+        <div class="sec7under">
+            <div class="sec7card">
+                <img src="../imgs/sec7-1.avif" alt="">
+                <h3 class="sec7head" data-aos="zoom-out">Under $25</h3>
+            </div>
+            <div class="sec7card">
+                <img src="../imgs/sec7-2.avif" alt="">
+                <h3 class="sec7head" data-aos="zoom-out">Under $50</h3>
+            </div>
+            
+            <div class="sec7card">
+                <img src="../imgs/sec7-3.avif" alt="">
+                <h3 class="sec7head" data-aos="zoom-out">Under $75</h3>
+            </div>
+            <div class="sec7card">
+                <img src="../imgs/sec7-4.avif" alt="">
+                <h3 class="sec7head" data-aos="zoom-out">Under $100</h3>
+            </div>
+            <div class="sec7card">
+                <img src="../imgs/sec7-5.avif" alt="">
+                <h3 class="sec7head" data-aos="zoom-out">25% Off</h3>
+            </div>
+            <div class="sec7card">
+                <img src="../imgs/sec7-6.avif" alt="">
+                <h3 class="sec7head"  data-aos="zoom-out">Explore More</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="section8">
+        <div class="sec8lft"  data-aos="fade-up">
+            <h1>Shop Al Fresco Dining</h1>
+            <h4>When it comes to hosting your most ideal picnic, there are so many things to think about. From sauces to
+                trays, we've got you covered.</h4>
+            <button class="sec1btn1">Browse All</button>
+        </div>
+        <div class="sec8right">
+            <img src="../imgs/sec8rgt.webp" alt="">
+        </div>
+
+    </div>
+
+    <div class="section9">
+        <div class="sec91">
+            <div class="box" id="sec9box1">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-1.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-2.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-3.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-4.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-5.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+            <button id="right-arrow" onclick="slideIn()">
+                <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                    <path d="M65.29 11.99L27.28 50L65.3 87.99L70.25 83.06L37.19 50L70.26 16.94L65.29 11.99Z"
+                        class="arrow" transform="translate(100, 100) rotate(180) "></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sec92">
+            <div class="box" id="sec9box2">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-6.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-7.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-8.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-9.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+            <div class="box">
+                <div class="checkbox">
+                    <input type="checkbox" id="cmp" name="" value="Compare">
+                    <label for="cmp">Compare</label>
+                </div>
+                <img src="../imgs/sec9-2.avif" alt="">
+                <button class="savebtn">Save upto 30%</button>
+                <h1>$35.00 - $50.00</h1>
+                <h3>Home City Candles</h3>
+                <h4>In stock</h4>
+                <div class="rating">
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>2 Reviews</p>
+                </div>
+                <div class="sec4btns">
+                    <button class="QS">Quick Shop</button>
+                    <button class="ATC">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+
+            <button id="right-arrow" onclick="slideIn()" disabled>
+                <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                    <path d="M65.29 11.99L27.28 50L65.3 87.99L70.25 83.06L37.19 50L70.26 16.94L65.29 11.99Z"
+                        class="arrow" transform="translate(100, 100) rotate(180) "></path>
+                </svg>
+            </button>
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="section10 grid grid-cols-2 grid-rows-2 gap-3 m-6">
+        <div class="sec101 col-span-2 relative">
+            <div>
+                <img class=" w-full" src="../imgs/sec10-1.webp" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-8 w-96"  data-aos="fade-up">
+                <div class="sec3txt">
+                    <h2 class="text-4xl font-bold">Bonus Savings for Members</h2>
+                    <h4 class="font-normal text-xl">Sign up today in order to unlock exclusive deals and special
+                        discounts</h4>
+                </div>
+                <button
+                    class="sec3btn text-base font-bold text-white py-1 bg-red-500 border-2 border-red-500 w-40">Learn
+                    More</button>
+
+            </div>
+
+        </div>
+        <div class="sec102 relative">
+            <div>
+                <img class=" w-full" src="../imgs/sec10-2.webp" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-8 w-96"  data-aos="fade-up">
+                <div class="sec3txt">
+                    <h2 class="text-white text-4xl font-bold">Warehouse Sale</h2>
+                    <h4 class="text-white font-normal text-xl">Our most anticipated sale of discontinued items has
+                        finally arrived! While supplies last.</h4>
+                </div>
+                <button class="sec3btn text-base font-bold text-red-500 py-1 bg-white border-2 border-white w-40">Shop
+                    Sale</button>
+
+            </div>
+        </div>
+        <div class="sec103  relative">
+            <div>
+                <img class=" w-full" src="../imgs/sec10-3.webp" alt="">
+            </div>
+            <div class="upbox flex flex-col absolute top-4 left-8 gap-8 w-96"  data-aos="fade-up">
+                <div class="sec3txt">
+                    <h2 class="text-white text-4xl font-bold">Open Box Deal</h2>
+                    <h4 class="text-white font-normal text-xl">Their return, your reward! Starting today, shop new
+                        exclusive products for less.</h4>
+                </div>
+                <button class="sec3btn text-base font-bold text-white py-1 bg-red-500 border-2 border-red-500 w-40">Save
+                    Now</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section11">
+        <div>
+            <h3 id="sec4head">
+                What is everyone saying?</h3>
+        </div>
+        <div class="stories">
+
+
+            <div class="story1">
+                <div class="story">
+                    <img class="storyimg" data-aos="zoom-out" src="../imgs/sec11-1.avif" alt="">
+
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>I feel like a chef when I cook with <a href="/products/cooking-pot" title="Cooking Pot">this
+                            pot</a>! Feels super safe too with the heat-proof handles and comes with a great fitting
+                        lid.</p>
+                </div>
+                <div class="story">
+                    <img class="storyimg" data-aos="zoom-out" src="../imgs/sec11-2.avif" alt="">
+
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>If you know that's getting into the world of wine, <a href="/products/drink-wine-book"
+                            title="Drink Wine Book">this book</a> will make a great gift! Very pleasant and full of fun
+                        anecdotes.</p>
+                </div>
+
+                <div class="story">
+                    <img class="storyimg" data-aos="zoom-out" src="../imgs/sec11-3.avif" alt="">
+
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>The <a href="/products/himalayan-salt-tequila-glasses-set-of-4"
+                            title="Tequila Glasses (Set of 4)">Tequila Glasses</a> set is a super unique gift idea for
+                        anyone in your life that have a home bar. Definitely gets a party going!</p>
+                </div>
+
+                <button id="right-arrow" onclick="slideIn2()">
+                    <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                        <path d="M65.29 11.99L27.28 50L65.3 87.99L70.25 83.06L37.19 50L70.26 16.94L65.29 11.99Z"
+                            class="arrow" transform="translate(100, 100) rotate(180) "></path>
+                    </svg>
+                </button>
+            </div>
+
+
+            <div class="story2">
+                <div class="story">
+                    <img class="storyimg" data-aos="zoom-out" src="../imgs/sec11-4.avif" alt="">
+
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>I feel like a chef when I cook with <a href="/products/cooking-pot" title="Cooking Pot">this
+                            pot</a>! Feels super safe too with the heat-proof handles and comes with a great fitting
+                        lid.</p>
+                </div>
+                <div class="story">
+                    <img class="storyimg" data-aos="zoom-out" src="../imgs/sec11-5.webp" alt="">
+
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>If you know that's getting into the world of wine, <a href="/products/drink-wine-book"
+                            title="Drink Wine Book">this book</a> will make a great gift! Very pleasant and full of fun
+                        anecdotes.</p>
+                </div>
+
+                <div class="story">
+                    <img class="storyimg" data-aos="zoom-out" src="../imgs/sec11-6.webp" alt="">
+
+                    <div class="stars">
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+
+
+
+                    </div>
+                    <p>The <a href="/products/himalayan-salt-tequila-glasses-set-of-4"
+                            title="Tequila Glasses (Set of 4)">Tequila Glasses</a> set is a super unique gift idea for
+                        anyone in your life that have a home bar. Definitely gets a party going!</p>
+                </div>
+
+                <button id="right-arrow" onclick="slideIn2()" disabled>
+                    <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                        <path d="M65.29 11.99L27.28 50L65.3 87.99L70.25 83.06L37.19 50L70.26 16.94L65.29 11.99Z"
+                            class="arrow" transform="translate(100, 100) rotate(180) "></path>
+                    </svg>
+                </button>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="section12">
+        <div>
+            <h3 id="sec4head">
+                Getting Inspiration</h3>
+        </div>
+
+
+        <div class="section12under">
+            <div class="sec12box">
+                <img class="sec12img" src="../imgs/sec12-1.webp" alt="">
+                <h4 class="sec12date">March 2, 2021</h4>
+                <h1 class="sec12head">Kitchen Organization That Will Fire-Up Your Daily Cooking Game</h1>
+                <p class="sec12para">Kitchens can be one of the most challenging areas to organize because that's where
+                    all the action happens. It can often be hard to find space for everything.</p>
+                <a class="sec12link" href="">Read now</a>
+            </div>
+            <div class="sec12box">
+                <img class="sec12img" src="../imgs/sec12-2.webp" alt="">
+                <h4 class="sec12date">February 24, 2021</h4>
+                <h1 class="sec12head">Meet the Maker: A Glance Inside Maya Mill's Beautiful Studio</h1>
+                <p class="sec12para">
+                    Minimal and timeless, we saw Maya Mill's artwork a few years ago and have been following her since.
+                    Her aesthetic exudes vibrant elegance and beauty.</p>
+                <a class="sec12link" href="">Read now</a>
+            </div>
+            <div class="sec12box">
+                <img class="sec12img" src="../imgs/sec12-3.webp" alt="">
+                <h4 class="sec12date">March 4, 2001</h4>
+                <h1 class="sec12head">Kitchen Organization That Will Fire-Up Your Daily Cooking Game</h1>
+                <p class="sec12para">Kitchens can be one of the most challenging areas to organize because that's where
+                    all the action happens. It can often be hard to find space for everything.</p>
+                <a class="sec12link" href="">Read now</a>
+            </div>
+
+        </div>
+        <a class="sec12link text-center text-3xl" href="">See More</a>
+
+    </div>
+
+    <div class="section13">
+        <h2>Search our Catalog</h2>
+        <h4>Enter a keyword and quickly find exactly what you're searching for</h4>
+        <div class="searchbar place-self-center">
+            <form class="form1" action="">
+                <input type="text" placeholder="Looking for something specific?">
+                <span id="searchicon"><svg aria-hidden="true" focusable="false" role="presentation"
+                        xmlns="http://www.w3.org/2000/svg" width="23" height="24" fill="none" viewBox="0 0 23 24">
+                        <path d="M21 21L15.5 15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        </path>
+                        <circle cx="10" cy="9" r="8" stroke="currentColor" stroke-width="2"></circle>
+                    </svg></span>
+            </form>
+        </div>
+    </div>
+
+    <div class="lastsec">
+        <div class="about">
+            <div class="box1">
+                <b class="headtext">Get in touch</b>
+                <br>
+                <a href="" style=" color: black;"><img class="icon-cls mb-1" src="../imgs/eml.png" alt="">Email us</a>
+                <br>
+                <a href="" style="color: black;"><img class="icon-cls mb-1" src="../imgs/phn.png"
+                        alt="">888-546-4068</a>
+                <br>
+                <br>
+                <b class="headtext">Follow us</b>
+                <ul class="icon-list">
+                    <li><img class="icon-cls" src="../imgs/insta.png" alt=""></li>
+                    <li><img class="icon-cls" src="../imgs/fb.png" alt=""></li>
+                    <li><img class="icon-cls" src="../imgs/twt.png" alt=""></li>
+                    <li><img class="icon-cls" src="../imgs/pint.png" alt=""></li>
+                    <li><img class="icon-cls" src="../imgs/tiktok.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="box2">
+                <b class="headtext">Company</b>
+                <ul>
+                    <li "><a style=" text-decoration: none; color: black;" href=" ">FAQs</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Blog</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Contact Us</a></li>
+
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Privacy Policy</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Your CA Privacy Rights</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Affiliate Sign-Up</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Fasting Success Stories</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Accessibility</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">L-Nutra Health</a></li>
+                </ul>
+            </div>
+            <div class="box3">
+                <b class="headtext">Support</b>
+                <ul>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Prolon 5-Day Fasting</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Reset 1-Day Kit</a></li>
+
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Join Facebook Fasting Group</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Patient Registration</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Practitioner Locator</a></li>
+                    <li><a style="text-decoration: none;
+                    color: black;" href=" ">Practitioner Login</a></li>
+                </ul>
+            </div>
+            <div class="box4 w-56">
+                <b class="headtext">Newsletter</b>
+                <p style="margin-top: 10px;"><i>*In a clinical study, Prolon is shown over three cycles to help
+                        individuals lose an average of 5.7 lbs and 1.6 inches off their waist circumference.</i>
+                    <b>Individual Results May Vary.</b>
+                </p>
+                <br><br>
+                <p>The ingredients in Prolon are considered generally recognized as safe (GRAS).</p>
+                <div class="searchbar place-self-center">
+                    <form class="form1 w-56 ml-8" action="">
+                        <input type="text" placeholder="Your E-mail here">
+
+                    </form>
+                </div>
+
+                <button class="sec1btn1 mt-4 place-self-center">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js">
+</script>
+    <script>
+
+
+
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+
+        function slideIn() {
+            var group = document.querySelector(".sec92");
+            var first = document.querySelector(".sec91");
+            group.classList.add("slide-in");
+            first.style.opacity = 0;
+            // first.classList.add("slide-out");
+        }
+        function slideIn2() {
+            var group1 = document.querySelector(".story2");
+            var first1 = document.querySelector(".story1");
+            group1.classList.add("slide-in");
+            first1.style.opacity = 0;
+            // first.classList.add("slide-out");
+        }
+
+
+        const observer = new IntersectionObserver(entries => {
+            // Loop over the entries
+            entries.forEach(entry => {
+                // If the element is visible
+                if (entry.isIntersecting) {
+                    // Add the animation class
+                    entry.target.classList.add('proj-anim');
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.sec7head'));
+
+
+
+
+        // Initiate zoom effect:
+        imageZoom("myimage", "myresult");
+
+
+
+            AOS.init({
+        duration: 2000,
+        offset: 50,
+        // once: true,
+      });
+
+
+
+
+    </script>
+</body>
+
+
+
+</html>
